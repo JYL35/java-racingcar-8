@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -31,5 +34,18 @@ public class CarRosterTest {
     void test_중복_이름_예외발생(String testInput) {
         assertThatThrownBy(() -> new CarRoster(testInput))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("자동차 이름들로 자동차 만들기")
+    void test_자동차_만들기() {
+        CarRoster carRoster = new CarRoster("even ,pobi, woni,30");
+
+        List<Car> carList = carRoster.createCars();
+
+        assertThat(carList.get(0).getName()).isEqualTo("even");
+        assertThat(carList.get(1).getName()).isEqualTo("pobi");
+        assertThat(carList.get(2).getName()).isEqualTo("woni");
+        assertThat(carList.get(3).getName()).isEqualTo("30");
     }
 }
