@@ -36,4 +36,9 @@ public class CarRoster {
             throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
         }
     }
+
+    public List<Car> createCars() {
+        return carRoster.stream().map(CarName::new)
+                .map(Car::new).toList();
+    }
 }
