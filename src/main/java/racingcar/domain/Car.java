@@ -22,4 +22,8 @@ public class Car {
             this.position++;
         }
     }
+
+    public boolean comparePosition(int compareNumber) {
+        return compareNumber == position;
+    }
 }
