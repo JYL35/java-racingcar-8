@@ -16,4 +16,10 @@ public class Car {
     public String getDistanceMoved() {
         return "-".repeat(position);
     }
+
+    public void move(int randomNumber) {
+        if(randomNumber >= 4) {
+            this.position++;
+        }
+    }
 }
