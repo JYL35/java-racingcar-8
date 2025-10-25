@@ -23,4 +23,26 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo(resultName);
         assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
     }
+
+    @Test
+    @DisplayName("무작위 값이 4이상일 경우 전진한다")
+    void test_자동차_전진() {
+        car.move(4);
+        car.move(7);
+
+        String resultDistance = "-";
+
+        assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
+    }
+
+    @Test
+    @DisplayName("무작위 값이 3이하일 경우 멈춘다")
+    void test_자동차_멈춤() {
+        car.move(3);
+        car.move(1);
+
+        String resultDistance = "";
+
+        assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
+    }
 }
