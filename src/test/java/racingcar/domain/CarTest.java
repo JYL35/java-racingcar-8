@@ -30,7 +30,7 @@ public class CarTest {
         car.move(4);
         car.move(7);
 
-        String resultDistance = "-";
+        String resultDistance = "--";
 
         assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
     }
