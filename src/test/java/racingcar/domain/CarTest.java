@@ -45,4 +45,25 @@ public class CarTest {
 
         assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
     }
+
+    @Test
+    @DisplayName("이 자동차가 우승자인지 확인(참)")
+    void test_우승자_확인_True() {
+        car.move(4);
+        car.move(8);
+
+        int winnerPosition = 2;
+
+        assertThat(car.comparePosition(winnerPosition)).isTrue();
+    }
+
+    @Test
+    @DisplayName("이 자동차가 우승자인지 확인(거짓)")
+    void test_우승자_확인_False() {
+        car.move(3);
+
+        int winnerPosition = 1;
+
+        assertThat(car.comparePosition(winnerPosition)).isFalse();
+    }
 }
