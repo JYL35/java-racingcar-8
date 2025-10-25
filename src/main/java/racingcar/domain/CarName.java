@@ -16,7 +16,7 @@ public class CarName {
 
     private void validateNotNullAndBlank(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("라운드 수는 공백이거나 비어있을 수 없습니다.");
+            throw new IllegalArgumentException("자동차 이름은 공백이거나 비어있을 수 없습니다.");
         }
     }
 
