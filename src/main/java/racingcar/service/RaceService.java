@@ -17,4 +17,20 @@ public class RaceService {
             car.move(randomNumber);
         }
     }
+
+    public List<String> findWinners(List<Car> carList) {
+        int maxPosition = findMaxPosition(carList);
+
+        return carList.stream()
+                .filter(car -> car.comparePosition(maxPosition))
+                .map(Car::getName)
+                .toList();
+    }
+
+    private int findMaxPosition(List<Car> carList) {
+        return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
 }
