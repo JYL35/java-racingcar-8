@@ -46,4 +46,34 @@ public class RaceServiceTest {
             assertThat(car.comparePosition(0)).isTrue();
         }
     }
+
+    @Test
+    @DisplayName("최종 우승자를 선별한다(단독 우승)")
+    void test_단독_우승자_선별_테스트() {
+        MoveStrategy moveStrategy = () -> 3;
+        raceService = new RaceService(moveStrategy);
+
+        carList.get(0).move(4);
+
+        List<String> winners = raceService.findWinners(carList);
+
+        assertThat(winners).contains("even");
+        assertThat(winners).doesNotContain("pobi", "woni", "30");
+    }
+
+    @Test
+    @DisplayName("최종 우승자를 선별한다(공동 우승)")
+    void test_공동_우승자_선별_테스트() {
+        MoveStrategy moveStrategy = () -> 3;
+        raceService = new RaceService(moveStrategy);
+
+        carList.get(0).move(4);
+        carList.get(1).move(4);
+        carList.get(2).move(4);
+
+        List<String> winners = raceService.findWinners(carList);
+
+        assertThat(winners).contains("even", "pobi", "woni");
+        assertThat(winners).doesNotContain("30");
+    }
 }
