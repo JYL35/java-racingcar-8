@@ -15,8 +15,8 @@ public class Car {
         return carName.getName();
     }
 
-    public String getDistanceMoved() {
-        return "-".repeat(position);
+    public int getPosition() {
+        return position;
     }
 
     public void move(int randomNumber) {

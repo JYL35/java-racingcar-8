@@ -18,10 +18,10 @@ public class CarTest {
     @DisplayName("Car 객체 생성 시, 이름을 부여하고 0의 위치를 가진다")
     void test_자동차_생성_확인() {
         String resultName = "even";
-        String resultDistance = "";
+        int resultPosition = 0;
 
         assertThat(car.getName()).isEqualTo(resultName);
-        assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
+        assertThat(car.getPosition()).isEqualTo(resultPosition);
     }
 
     @Test
@@ -30,9 +30,9 @@ public class CarTest {
         car.move(4);
         car.move(7);
 
-        String resultDistance = "--";
+        int resultPosition = 2;
 
-        assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
+        assertThat(car.getPosition()).isEqualTo(resultPosition);
     }
 
     @Test
@@ -41,9 +41,9 @@ public class CarTest {
         car.move(3);
         car.move(1);
 
-        String resultDistance = "";
+        int resultPosition = 0;
 
-        assertThat(car.getDistanceMoved()).isEqualTo(resultDistance);
+        assertThat(car.getPosition()).isEqualTo(resultPosition);
     }
 
     @Test
