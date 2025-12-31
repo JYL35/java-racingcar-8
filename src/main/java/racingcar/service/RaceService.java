@@ -1,7 +1,9 @@
 package racingcar.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.ArrayList;
 import java.util.List;
+import racingcar.dto.RoundResult;
 import racingcar.service.domain.Car;
 import racingcar.service.domain.CarName;
 
@@ -17,10 +19,14 @@ public class RaceService {
                 .toList();
     }
 
-    public void raceStart(int RoundNumber) {
+    public List<RoundResult> raceStart(int RoundNumber) {
+        List<RoundResult> results = new ArrayList<>();
+
         for (int i = 0; i < RoundNumber; i++) {
             oneRoundStart();
+            results.add(RoundResult.from(carRoster));
         }
+        return results;
     }
 
     private void oneRoundStart() {
