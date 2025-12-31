@@ -29,6 +29,22 @@ public class RaceService {
         return results;
     }
 
+    public List<String> findWinner() {
+        int maxDistance = findMaxDistance();
+
+        return carRoster.stream()
+                .filter(car -> car.getPosition() == maxDistance)
+                .map(Car::getCarName)
+                .toList();
+    }
+
+    private int findMaxDistance() {
+        return carRoster.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
     private void oneRoundStart() {
         for (Car car : carRoster) {
             car.move(movementStrategy());
